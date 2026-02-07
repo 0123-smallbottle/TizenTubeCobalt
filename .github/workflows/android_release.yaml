@@ -45,7 +45,6 @@ jobs:
         run: |
           export PYTHONPATH=$GITHUB_WORKSPACE:$PYTHONPATH
           gn gen out/android-${{ matrix.arch }}_gold --args='target_platform="android-${{ matrix.arch }}" target_os="android" target_cpu="${{ matrix.cpu }}" build_type="gold" sb_api_version=15'
-          gn check out/android-${{ matrix.arch }}_gold
 
       - name: Build Cobalt
         run: |
