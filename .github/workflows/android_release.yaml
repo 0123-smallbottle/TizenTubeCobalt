@@ -6,9 +6,10 @@ on:
 jobs:
   build-android:
     runs-on: ubuntu-latest
+    env:
+      ANDROID_HOME: ${{ github.workspace }}/android-sdk
     strategy:
       matrix:
-        # arm64 uses target_cpu "arm64", x86_64 uses target_cpu "x64"
         include:
           - arch: arm64
             cpu: arm64
@@ -27,6 +28,10 @@ jobs:
 
       - name: Install build dependencies
         run: |
+          # Unset system SDK root to prevent permission issues
+          unset ANDROID_SDK_ROOT
+          echo "ANDROID_SDK_ROOT=" >> $GITHUB_ENV
+          
           sudo apt update && sudo apt install -qqy --no-install-recommends \
             bison clang libasound2-dev libgles2-mesa-dev libglib2.0-dev \
             libxcomposite-dev libxi-dev libxrender-dev nasm ninja-build \
