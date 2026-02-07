@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ANDROID_HOME: ${{ github.workspace }}/android-sdk
+      PYTHONPATH: ${{ github.workspace }}
     strategy:
       matrix:
         include:
@@ -43,7 +44,6 @@ jobs:
 
       - name: GN
         run: |
-          export PYTHONPATH=$GITHUB_WORKSPACE:$PYTHONPATH
           gn gen out/android-${{ matrix.arch }}_gold --args='target_platform="android-${{ matrix.arch }}" target_os="android" target_cpu="${{ matrix.cpu }}" build_type="gold" sb_api_version=15'
 
       - name: Build Cobalt
