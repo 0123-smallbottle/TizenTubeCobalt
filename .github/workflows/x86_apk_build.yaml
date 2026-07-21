@@ -32,6 +32,8 @@ jobs:
             bison clang libasound2-dev libgles2-mesa-dev libglib2.0-dev \
             libxcomposite-dev libxi-dev libxrender-dev nasm ninja-build \
             python3-venv ccache gcc-multilib g++-multilib libc6-dev-i386
+          mkdir -p third_party/jdk
+          ln -s "$JAVA_HOME_17_X64" third_party/jdk/current
           bash ./starboard/tools/download_clang.sh
           bash ./starboard/android/shared/download_sdk.sh
 
