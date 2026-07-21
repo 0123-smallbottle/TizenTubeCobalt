@@ -32,8 +32,8 @@ jobs:
             bison clang libasound2-dev libgles2-mesa-dev libglib2.0-dev \
             libxcomposite-dev libxi-dev libxrender-dev nasm ninja-build \
             python3-venv ccache gcc-multilib g++-multilib libc6-dev-i386
-          bash ./starboard/tools/download_clang.sh
-          bash ./starboard/android/shared/download_sdk.sh
+          bash ./cobalt/starboard/tools/download_clang.sh
+          bash ./cobalt/starboard/android/shared/download_sdk.sh
 
       - name: Generate x86 build
         run: |
